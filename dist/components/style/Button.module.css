@@ -1,6 +1,10 @@
 .button{
-    background-color: aquamarine;
+    border-radius: 7px;
+    background-color: #f1f1f1;
+    overflow: hidden;
 }
 .button:hover{
-    background-color: blue;
+    background-color: grey;
+    color: #f1f1f1;
+    cursor: pointer;
 }

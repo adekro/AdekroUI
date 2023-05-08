@@ -1,9 +1,16 @@
 import React from "react";
 import classes from "./style/Button.module.css";
-const Button = ({ children }) => {
+const Button = ({ children, onClick, className }) => {
+  const clsStyle = [classes.button, className];
+
+  const onClickHandler = () => {
+    try {
+      onClick();
+    } catch (error) {}
+  };
   return (
-    <button className={classes.button}>
-      <h4>{children}</h4>
+    <button className={clsStyle.join(" ")} onClick={onClickHandler}>
+      {children}
     </button>
   );
 };
