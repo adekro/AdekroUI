@@ -1,6 +1,6 @@
 {
   "name": "adekroui",
-  "version": "0.1.24",
+  "version": "0.1.28",
   "private": false,
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "babel src/lib -d dist",
+    "build": "babel src/lib -d dist && xcopy \"src/lib/components/style\" \"dist/components/style\" /h /e /y /i ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
