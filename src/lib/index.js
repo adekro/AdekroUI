@@ -1,2 +1,4 @@
 import Button from "./components/Button";
-export { Button };
+import Img from "./components/Img";
+import MessageModal from "./components/MessageModal";
+export { Button, Img, MessageModal };
