@@ -1,13 +1,25 @@
 import "./App.css";
 import React, { useState } from "react";
-import { Button, Img, MessageModal } from "./lib";
+import { Button, Img, Login, MessageModal, useLogin } from "./lib";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+
+  const { isLogged, getLogged } = useLogin();
+
   const openModal = () => {
     setShowModal((prev) => {
       return !prev;
     });
+  };
+  const openLogin = () => {
+    setShowLogin((prev) => {
+      return !prev;
+    });
+  };
+  const openLoggato = () => {
+    alert(getLogged());
   };
   return (
     <div className="App">
@@ -37,6 +49,20 @@ const App = () => {
             <MessageModal title="titolo del messaggio" onOut={openModal}>
               <label>Testo del messaggio</label>
             </MessageModal>
+          )}
+        </div>
+      </div>
+      <div>
+        <h2>Login</h2>
+        <div className="esempi">
+          <Button onClick={openLogin}>apri</Button>
+          <Button onClick={openLoggato}>loggato?</Button>
+          {showLogin && (
+            <Login
+              img="https://axonasrl.com/wp-content/uploads/2021/05/logo.png"
+              onSubmit={openLogin}
+              urlApi="https://svil.axonasrl.com:4488/apili/axo_login/-/"
+            />
           )}
         </div>
       </div>
