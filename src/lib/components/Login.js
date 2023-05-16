@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import classes from "./style/Login.module.css";
 import { normalizeToken } from "../lib";
+import Button from "./Button";
+import Card from "./Card";
 
 const Login = ({ logo, onSubmit, urlApi }) => {
   const emailInputRef = useRef();
@@ -47,7 +49,7 @@ const Login = ({ logo, onSubmit, urlApi }) => {
 
   return (
     <React.Fragment>
-      <section className={classes.auth}>
+      <Card>
         <img src={logo} alt="" className={classes.authlogo}></img>
         <form onSubmit={submitHandler}>
           <div className={classes.control}>
@@ -65,22 +67,18 @@ const Login = ({ logo, onSubmit, urlApi }) => {
           </div>
           <div className={classes.actions}>
             {!isLoading && (
-              <button>{isLogin ? "Login" : "Create Account"}</button>
+              <Button>{isLogin ? "Login" : "Create Account"}</Button>
             )}
             {isLoading && <p>Sending request...</p>}
             {isError && <p>{isError}</p>}
             {isNewUser && (
-              <button
-                type="button"
-                className={classes.toggle}
-                onClick={switchAuthModeHandler}
-              >
+              <Button type="button" onClick={switchAuthModeHandler}>
                 {isLogin ? "Create new account" : "Login with existing account"}
-              </button>
+              </Button>
             )}
           </div>
         </form>
-      </section>
+      </Card>
     </React.Fragment>
   );
 };

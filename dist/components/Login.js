@@ -10,6 +10,8 @@ require("core-js/modules/es.promise.js");
 var _react = _interopRequireWildcard(require("react"));
 var _LoginModule = _interopRequireDefault(require("./style/Login.module.css"));
 var _lib = require("../lib");
+var _Button = _interopRequireDefault(require("./Button"));
+var _Card = _interopRequireDefault(require("./Card"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -53,9 +55,7 @@ const Login = _ref => {
     setIsLoading(false);
     onSubmit();
   }
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("section", {
-    className: _LoginModule.default.auth
-  }, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Card.default, null, /*#__PURE__*/_react.default.createElement("img", {
     src: logo,
     alt: "",
     className: _LoginModule.default.authlogo
@@ -81,9 +81,8 @@ const Login = _ref => {
     ref: passwordInputRef
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: _LoginModule.default.actions
-  }, !isLoading && /*#__PURE__*/_react.default.createElement("button", null, isLogin ? "Login" : "Create Account"), isLoading && /*#__PURE__*/_react.default.createElement("p", null, "Sending request..."), isError && /*#__PURE__*/_react.default.createElement("p", null, isError), isNewUser && /*#__PURE__*/_react.default.createElement("button", {
+  }, !isLoading && /*#__PURE__*/_react.default.createElement(_Button.default, null, isLogin ? "Login" : "Create Account"), isLoading && /*#__PURE__*/_react.default.createElement("p", null, "Sending request..."), isError && /*#__PURE__*/_react.default.createElement("p", null, isError), isNewUser && /*#__PURE__*/_react.default.createElement(_Button.default, {
     type: "button",
-    className: _LoginModule.default.toggle,
     onClick: switchAuthModeHandler
   }, isLogin ? "Create new account" : "Login with existing account")))));
 };

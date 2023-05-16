@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
-import { Button, Img, Login, MessageModal, useLogin } from "./lib";
+import { Button, Card, Img, Login, MessageModal, useLogin } from "./lib";
+import Input from "./lib/components/Input/Input";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -64,6 +65,20 @@ const App = () => {
               urlApi="https://svil.axonasrl.com:4488/apili/axo_login/-/"
             />
           )}
+        </div>
+      </div>
+      <div>
+        <h2>Card</h2>
+        <div className="esempi">
+          <Card>questa è una card</Card>
+        </div>
+      </div>
+      <div>
+        <h2>Input</h2>
+        <div className="esempi">
+          <Card>
+            <Input value="input" label="input di test" />
+          </Card>
         </div>
       </div>
     </div>

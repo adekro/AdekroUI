@@ -1,0 +1,11 @@
+:root{
+    --primary-color:rgb(0, 102, 0);
+    --primary-text-color:#f1f1f1;
+    --secondary-color:rgb(155, 155, 155);
+    --secondary-text-color:rgb(0, 102, 0);
+    --activate-color:lightgreen;
+    --background-color:#f1f1f1;
+    --box-shadow:#c2c2c2;
+    --color:brown;
+    --input-active:lightgreen;
+}
