@@ -11,17 +11,19 @@ const Button = _ref => {
   let {
     children,
     onClick,
-    className
+    className,
+    ref
   } = _ref;
   const clsStyle = [_ButtonModule.default.button, className];
-  const onClickHandler = () => {
+  const onClickHandler = evt => {
     try {
-      onClick();
+      onClick(evt);
     } catch (error) {}
   };
   return /*#__PURE__*/_react.default.createElement("button", {
     className: clsStyle.join(" "),
-    onClick: onClickHandler
+    onClick: onClickHandler,
+    ref: ref
   }, children);
 };
 var _default = Button;
