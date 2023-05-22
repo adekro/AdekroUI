@@ -3,9 +3,9 @@ import classes from "./style/Button.module.css";
 const Button = ({ children, onClick, className }) => {
   const clsStyle = [classes.button, className];
 
-  const onClickHandler = () => {
+  const onClickHandler = (evt) => {
     try {
-      onClick();
+      onClick(evt);
     } catch (error) {}
   };
   return (

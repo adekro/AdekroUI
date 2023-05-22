@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
 var _CardModule = _interopRequireDefault(require("./style/Card.module.css"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const Card = _ref => {
@@ -12,7 +13,7 @@ const Card = _ref => {
     className
   } = _ref;
   const cls = [_CardModule.default.card, className];
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: cls.join(" ")
   }, children);
 };
