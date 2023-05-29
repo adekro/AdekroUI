@@ -9,7 +9,7 @@ const Button = ({ children, onClick, className }) => {
     } catch (error) {}
   };
   return (
-    <button className={clsStyle.join(" ")} onClick={onClickHandler} ref={ref}>
+    <button className={clsStyle.join(" ")} onClick={onClickHandler}>
       {children}
     </button>
   );

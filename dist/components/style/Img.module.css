@@ -12,9 +12,9 @@
 }
 .img_icon .svg{
     
-    filter: var(--svg-color-bianco);
+    filter: var(--adk-svg-color-bianco);
 }
 .img_button .svg{
     
-    filter: var(--svg-color-bianco);
+    filter: var(--adk-svg-color-bianco);
 }
