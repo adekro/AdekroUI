@@ -62,7 +62,7 @@ const App = () => {
             <Login
               img="https://axonasrl.com/wp-content/uploads/2021/05/logo.png"
               onSubmit={openLogin}
-              urlApi="https://svil.axonasrl.com:4488/apili/axo_login/-/"
+              urlApi="https://svil.axonasrl.com:4488/apili/axo_login/"
             />
           )}
         </div>

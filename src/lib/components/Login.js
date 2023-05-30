@@ -4,11 +4,12 @@ import { normalizeToken } from "../lib";
 import Button from "./Button";
 import Card from "./Card";
 
-const Login = ({ logo, onSubmit, urlApi }) => {
+const Login = ({ logo, onSubmit, urlApi, piva }) => {
+  const pivaInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isNewUser, setIsNewUser] = useState(false);
 
@@ -19,13 +20,21 @@ const Login = ({ logo, onSubmit, urlApi }) => {
   async function submitHandler(event) {
     event.preventDefault();
 
+    const enteredPiva = piva ? piva : pivaInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
     setIsLoading(true);
 
     //fetch login
-    await fetch(urlApi + "/" + enteredEmail + "/" + enteredPassword)
+    await fetch(
+      urlApi +
+        (enteredPiva === "" ? "-" : enteredPiva) +
+        "/" +
+        enteredEmail +
+        "/" +
+        enteredPassword
+    )
       .then((response) => {
         return response.json();
       })
@@ -52,6 +61,12 @@ const Login = ({ logo, onSubmit, urlApi }) => {
       <Card>
         <img src={logo} alt="" className={classes.authlogo}></img>
         <form onSubmit={submitHandler}>
+          {!piva && (
+            <div className={classes.control}>
+              <label htmlFor="piva">Piva</label>
+              <input type="text" id="piva" ref={pivaInputRef} />
+            </div>
+          )}
           <div className={classes.control}>
             <label htmlFor="email">Email</label>
             <input type="email" id="email" required ref={emailInputRef} />
