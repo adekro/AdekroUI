@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useInput from "../../hooks/useInput";
 import classes from "../style/Input.module.css";
-import { formatDate } from "../../lib";
+import { formatDate } from "axonalib";
 import Checklist from "./Checklist";
 
 const Input = (props) => {
@@ -14,7 +14,7 @@ const Input = (props) => {
     try {
       if (props.list.length > 0) {
         let rr = props.list.filter(function (x) {
-          return x.props.idobj === props.value;
+          return x.props.id === props.value;
         });
         if (rr.length > 0) {
           effVal = rr[0].props.value;

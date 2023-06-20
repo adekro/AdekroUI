@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { validateInput } from "../lib";
+import { validateInput } from "axonalib";
 
 const useInput = () => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -22,7 +22,7 @@ const useInput = () => {
               return x.props.value === evt.target.value;
             });
             if (rr.length > 0) {
-              setListValue(rr[0].props.idobj);
+              setListValue(rr[0].props.id);
             }
           }
         } catch (error) {}
@@ -71,7 +71,7 @@ const useInput = () => {
     try {
       if (list.length > 0) {
         let rr = list.filter(function (x) {
-          return x.props.idobj === enteredValue;
+          return x.props.id === enteredValue;
         });
         if (rr.length > 0) {
           setValue(rr[0].props.value);
@@ -97,7 +97,7 @@ const useInput = () => {
               <option
                 value={item[plist.descr]}
                 key={item[plist.id]}
-                idobj={item[plist.id]}
+                id={item[plist.id]}
               />
             );
           });

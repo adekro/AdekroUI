@@ -9,7 +9,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.promise.js");
 var _react = _interopRequireWildcard(require("react"));
 var _LoginModule = _interopRequireDefault(require("./style/Login.module.css"));
-var _lib = require("../lib");
+var _axonalib = require("axonalib");
 var _Button = _interopRequireDefault(require("./Button"));
 var _Card = _interopRequireDefault(require("./Card"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19,12 +19,14 @@ const Login = _ref => {
   let {
     logo,
     onSubmit,
-    urlApi
+    urlApi,
+    piva
   } = _ref;
+  const pivaInputRef = (0, _react.useRef)();
   const emailInputRef = (0, _react.useRef)();
   const passwordInputRef = (0, _react.useRef)();
   const [isLoading, setIsLoading] = (0, _react.useState)(false);
-  const [isLogin, setIsLogin] = (0, _react.useState)(false);
+  const [isLogin, setIsLogin] = (0, _react.useState)(true);
   const [isError, setIsError] = (0, _react.useState)(false);
   const [isNewUser, setIsNewUser] = (0, _react.useState)(false);
   const switchAuthModeHandler = () => {
@@ -32,19 +34,20 @@ const Login = _ref => {
   };
   async function submitHandler(event) {
     event.preventDefault();
+    const enteredPiva = piva ? piva : pivaInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     setIsLoading(true);
 
     //fetch login
-    await fetch(urlApi + "/" + enteredEmail + "/" + enteredPassword).then(response => {
+    await fetch(urlApi + (enteredPiva === "" ? "-" : enteredPiva) + "/" + enteredEmail + "/" + enteredPassword).then(response => {
       return response.json();
     }).then(data => {
       if (data.Errore.length > 0) {
         console.log(data.Errore);
         setIsError(data.Errore);
       } else {
-        const normT = (0, _lib.normalizeToken)(data.Token);
+        const normT = (0, _axonalib.normalizeToken)(data.Token);
         const expirationTime = new Date(new Date().getTime() + 14400 * 1000);
         localStorage.setItem("adk_token", normT);
         localStorage.setItem("adk_exptime", expirationTime);
@@ -61,7 +64,15 @@ const Login = _ref => {
     className: _LoginModule.default.authlogo
   }), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: submitHandler
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, !piva && /*#__PURE__*/_react.default.createElement("div", {
+    className: _LoginModule.default.control
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "piva"
+  }, "Piva"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    id: "piva",
+    ref: pivaInputRef
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: _LoginModule.default.control
   }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "email"

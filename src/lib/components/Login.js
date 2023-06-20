@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import classes from "./style/Login.module.css";
-import { normalizeToken } from "../lib";
+import { normalizeToken } from "axonalib";
 import Button from "./Button";
 import Card from "./Card";
 

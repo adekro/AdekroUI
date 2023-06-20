@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import { Button, Card, Img, Login, MessageModal, useLogin } from "./lib";
 import Input from "./lib/components/Input/Input";
+import TargaRecognition from "./lib/components/TargaRecognition/TargaRecognition";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -78,6 +79,14 @@ const App = () => {
         <div className="esempi">
           <Card>
             <Input value="input" label="input di test" />
+          </Card>
+        </div>
+      </div>
+      <div>
+        <h2>OCR</h2>
+        <div className="esempi">
+          <Card>
+            <TargaRecognition></TargaRecognition>
           </Card>
         </div>
       </div>
